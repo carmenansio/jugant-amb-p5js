@@ -8,7 +8,8 @@ Aquest Workshop es d'introducció a la programació creativa, vol mostrar les po
 Experimentarem amb eines per a crear text, imatges/video i videojocs a un entorn web interactiu.
 
 ## Wifi
-Red: 
+Red:
+<br>
 Password: 
 
 ## Presentació del ponent
@@ -34,27 +35,27 @@ Password:
 - [Comunidad p5.js](https://p5js.org/es/community/)
 - [Referencia web de p5.js](https://p5js.org/es/reference/)
 - [Editor web p5.js](https://alpha.editor.p5js.org/)
+- [Compartir codi en directe](https://codeshare.io/)
 
 ### Primeres figures
-- [ellipse()](https://p5js.org/es/reference/#/p5/ellipse), 
-- [rect()](https://p5js.org/es/reference/#/p5/rect) y 
+- [ellipse()](https://p5js.org/es/reference/#/p5/ellipse)
+- [rect()](https://p5js.org/es/reference/#/p5/rect)
 - [triangle()](https://p5js.org/es/reference/#/p5/triangle)
 
 ### Model de Color
 - [colorMode()](https://p5js.org/es/reference/#/p5/colorMode)
 
 ### Funcions d'espai
-- [push()](https://p5js.org/es/reference/#/p5/push), 
-- [pop()](https://p5js.org/es/reference/#/p5/pop), 
-- [translate()](https://p5js.org/es/reference/#/p5/translate) y 
+- [push()](https://p5js.org/es/reference/#/p5/push)
+- [pop()](https://p5js.org/es/reference/#/p5/pop)
+- [translate()](https://p5js.org/es/reference/#/p5/translate)
 - [rotate()](https://p5js.org/es/reference/#/p5/rotate)
-
 - [map()](https://p5js.org/es/reference/#/p5/map)
 
 ### Variables internes
-- [mouseX](https://p5js.org/reference/#/p5/mouseX), 
-- [mouseY](https://p5js.org/reference/#/p5/mouseY), 
-- [width](https://p5js.org/reference/#/p5/width), 
+- [mouseX](https://p5js.org/reference/#/p5/mouseX) 
+- [mouseY](https://p5js.org/reference/#/p5/mouseY)
+- [width](https://p5js.org/reference/#/p5/width)
 - [height](https://p5js.org/reference/#/p5/height)
 
 ## Altres entorns
@@ -70,14 +71,11 @@ Password:
 - [text()](https://p5js.org/reference/#/p5/text)
 - [textSize()](https://p5js.org/reference/#/p5/textSize) 
 - [textFont()](https://p5js.org/reference/#/p5/textFont)
-
-- Importació de fonts:
 - [loadFont()](https://p5js.org/reference/#/p5/loadFont)
 - [preLoad()](https://p5js.org/reference/#/p5/preLoad)
 
 ### Fonts
 - Funció [preload()](https://p5js.org/es/reference/#/p5/preload)
-- Mètodes d'objecte *font*: 
 - [textBounds()](https://p5js.org/es/reference/#/p5.Font/textBounds)
 - [textToPints()](https://p5js.org/es/reference/#/p5.Font/textToPoints)
 
