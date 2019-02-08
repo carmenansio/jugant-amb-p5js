@@ -1,0 +1,1129 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Introducció a p5.js - Codi creatiu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <!--- highlights.js imprimir codid. usar <pre><code></pre></code> --->
+  <link rel="stylesheet" href="/path/to/styles/default.css">
+  <script src="/path/to/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <!--- FI llibreria highlights.js --->
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        <script type="text/template">
+          <h2>Introducció a la programació creativa amb p5.js</h2>
+        </script>
+      </section>
+      <section>
+        <h4>Qui sóc?</h4>
+        <img style="width: 300px; border: none; background: none; box-shadow: none;" src="img/carmen-logo.svg" alt="carmen logo">
+        <p>
+          <ul style="text-align: center; list-style: none;">
+            <li><b><a target="_blank" href="https://twitter.com/carmenansio">@carmenansio</a></b></li>
+            <li>UX Engineer a <a target="_blank" href="http://www.desigual.com/">Desigual</a>.</li>
+          </ul>
+        </p>
+      </section>
+      <!-- objectius del taller -->
+      <section>
+        <h4>Objectius del taller</h4>
+        <p style="text-align: left;">
+          <ul>
+            <li>Apropar-vos al món de la programació.</li>
+            <li>Aprendre a programar JavaScript.</li>
+            <li>Crear aplicacions visuals i creatives utilitzant la llibreria <a target="_blank" href="http://p5js.org/">p5.js</a>.</li>
+          </ul>
+        </p>
+      </section>
+      <!-- Com començar -->
+      <section>
+        <h4>Eines necessàries</h4>
+        <ul>
+          <li><a target="_blank" href="https://editor.p5js.org/">P5.js</a> editor online.</li>
+          <li><a target="_blank" href="https://github.com/CreativeCodingGirona/PCDGirona2019">PCGGirona</a> Github.</li>
+          <li><a target="_blank" href="https://codeshare.io">Codeshare</a> compartir codi online.</li>
+          <li><a target="_blank" href="https://github.com/processing/p5.js-getting-started-es/blob/master/v1.0.5.pdf">Llibre </a>intro a p5.js.</li>
+        </ul>
+      </section>
+      <!-- Html5 i canvas -->
+      <section>
+        <h4><code>createCanvas();</code></h4>
+        <ul>
+          <li>HTML5 és la nostre tv.</li>
+          <li>JavaScript és la nostre NintendoSwitch.</li>
+          <li>P5.js és el nostre "Super Mario Odyssey".</li>
+        </ul>
+      </section>
+      <section>
+        <p>
+          <h4 style="text-align: center;">Com escriure codi amb P5.js</h4>
+        </p>
+        <p>
+          <ul>
+            <li>Prepara el teu canvas de pintor, és a dir, la pantalla del ordinador.</li>
+            <li><code>setup</code> s'executa un cop.</li>
+            <li><code>draw</code> s'executa en un loop.</li>
+          </ul>
+        </p>
+        <pre>
+          <code class="hljs" data-trim contenteditable>
+              // launch your canvas
+              function setup() {
+                // put setup code here
+                createCanvas(500,500);
+                background(0,0,255):
+              }
+              // loop for your draw/animation
+              function draw() {
+                // put drawing code here
+                noStroke()
+                fill(255,255,0);
+                ellipse(250,250,250,250);
+              }
+          </code>
+        </pre>
+      </section>
+      <!-- Aclariments del setup inicial-->
+      <section>
+        <h4>Aclariments</h4>
+        <p>
+          <ul>
+            <li><code>//</code> els comentaris van després de dues barres diagonals <br>
+              //Si el teu comentari és llarg i necessita de la següent línia, <br>
+              //no oblidis tornar a posar al principi de la nova línia.</li>
+            <li><code>()</code>els paràmetres van dintre del parèntesis.</li>
+            <li><code>{}</code>Recorda que cada clau que obre necessita una clau que tanca.
+              Tot el que està entre aquestes claus representa un code block o bloc
+              de codi.</li>
+          </ul>
+        </p>
+      </section>	
+      <!-- Sistema de coordenades -->
+      <section>
+        <h4>Sistema de coordenades</h4>
+        <img style="width: 800px; border: none; background: none; box-shadow: none;" src="img/coordenades.png" alt="">
+      </section>	
+      <!-- Bones practiques-->
+      <section>
+        <h4>Bones pràctiques</h4>
+        <ul>
+          <li>Escriure codi net farà que sigui més fàcil de llegir.</li>
+          <li>Pressiona ‘tab’ després de cada clau <code>{</code> per a indentar.</li>
+        </ul>
+        <pre>
+            <code class="hljs" data-trim contenteditable>
+                //Exemple sense indentar
+                for ( var i = 5; i < 95; i += 5 )
+                {
+                if ( i < 35) {line(30, i, 80, i); } else { line(
+                20, i, 90, i)} }
+
+                //Exemple net
+                for ( var i = 5; i < 95; i += 5) {
+                  
+                if ( i < 35 ) {
+                    line( 30, i, 80, i );
+                  } else {
+                    line( 20, i, 90, i );
+                  }
+                }
+            </code>
+        </pre>
+      </section>
+      <!-- Debugging -->
+      <section>
+          <h4>Que és Debugging?</h4>
+          <ul>
+            <li>Es l'acció creativa de depuració de bugs.</li>
+            <li>Un bug o error és quan creus que li estàs dient a l'ordinador
+                una cosa, però està fent una cosa diferent, o no està fent res de res.</li>
+          </ul>
+      </section>
+      <!-- Bug / typo -->
+      <section>
+          <h4>Que fer?</h4>
+          <ul>
+            <li>No t'espantis.</li>
+            <li>Compara. Troba. Fix.</li>
+            <li>Mira els comentaris i la resta de codi (pots aprendre molt dels teus compis).</li>
+            <li>Tipus: error comú de sintaxi. Com quan tens una falta a un dictat.</li>
+            <li>Demana ajuda als teus compis. Peer Programming.</li>
+          </ul>
+      </section>
+      <!-- Configura el canvas -->
+      <section>
+          <h4>Configura el canvas</h4>
+          <ul>
+            <li><code>setup()</code> s'executa una vegada. és fa servir
+              per a determinar la grandària del canvas i el
+              color del background o fons. Aquí pots dibuixar les teves
+              formes, però no tindran moviment!.</li>
+          </ul>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function setup () {
+                    //determina el Mida del tu canvas i color de fons
+                    aquí
+                  }
+              </code>
+          </pre>
+      </section>
+      <!-- Mida del canvas -->
+      <section>
+          <h4>Mida del canvas</h4>
+          <ul>
+            <li><code>createCanvas( width, height )</code>.</li>
+            <li><code>width</code> l'amplada en píxels.</li>
+            <li><code>height</code> l'alçada en píxels.</li>
+          </ul>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function setup () {
+                    //determina el Mida del teu canvas i color de fons aquí
+                  }
+              </code>
+          </pre>
+      </section>
+      <!-- El color -->
+      <section>
+          <h4>El color del canvas</h4>
+          <ul>
+            <li><code>background( R, G, B, alpha )</code>.</li>
+            <li><code>R</code> Red - color vermell.</li>
+            <li><code>G</code> Green - color verd.</li>
+            <li><code>B</code> Blue - color blau.</li>
+            <li><code>alpha</code> Opacitat (la transparència d'un color).</li>
+          </ul>
+          <p style="text-align: left;"><small>Recorda que (R,G,B) s'ha de reemplaçar amb valors numerics</small></p>
+      </section>
+      <!-- Dibuixa i anima -->
+      <section>
+          <h4>Dibuixa i anima</h4>
+          <ul>
+            <li><code>function draw()</code>s'executa en un loop o cicle
+              (infinitament fins que ho interromps). Aquí, pots
+              crear patrons complexos, i fer que els dibuixos tinguin
+              moviment!.</li>
+          </ul>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function draw () {
+                    //dibuixa i dona estils a les teves formes aqui
+                    }
+              </code>
+          </pre>
+      </section>
+       <!-- formes i colors -->
+       <section>
+          <h4>Formes i colors</h4>
+          <ul>
+              <li>El model de colors <code>RGB</code> és un model de color fascinant en el qual llums
+                  vermella, verda i blava és barregen de diverses maneres per a crear altres colors.</li>
+              <li>El rang possible de colors és descriu usant nombres del <code>0</code> (gens de llum
+                      d'aquest color) fins a <code>255</code> (tota la llum d'aquest color).</li>
+          </ul>
+      </section>
+      <!-- Colors -->
+      <section>
+        <h4>Colors</h4>
+        <p style="font-size: 28px;"><a target="_blank" href="https://htmlcolorcodes.com/">Llistat colors html</a></p>
+        <ul>
+            <li><code>fill( R, G, B, alpha)</code>.</li>
+            <li><code>stroke( R, G, B, alpha)</code>.</li>
+            <li><code>strokeWeight(#)</code>.</li>
+            <li><code>noStroke()</code>.</li>
+        </ul>
+        <pre>
+            <code class="hljs" data-trim contenteditable>
+                fill( R, G, B, alpha ) //omple una forma amb color
+                stroke( R, G, B, alpha ) //determina el color del borde
+                strokeWeight(#) //determina el gruix d'un traç, línia o punt
+                noStroke() //no dibuixa un traç perímetre o riba
+            </code>
+        </pre>
+      </section>
+      <!-- Formes -->
+      <section>
+          <h4>Formes</h4>
+            <p style="font-size: 28px;"><code>Exemple 1.1</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                    // launch your canvas
+                    function setup() {
+                      // put setup code here
+                      createCanvas(500,500);
+                      background(0,0,255):
+                    }
+
+                    // loop for your draw/animation
+                    function draw() {
+                      // put drawing code here
+                      noStroke()
+                      fill(255,255,0);
+                      ellipse(250,250,250,250);
+                    }
+              </code>
+            </pre>
+      </section>
+      <!-- Exemple mouse input -->
+      <section>
+          <h4>Mouse input</h4>
+            <p style="font-size: 28px;"><code>Exemple 1.2</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  // launch your canvas
+                  function setup() {
+                    // put setup code here
+                    createCanvas(640, 360);
+                    background(255);
+                    noSmooth();
+                  }
+                  
+                  // loop for your draw/animation
+                  function draw() {
+                    // put drawing code here
+                    fill(0,255,0);
+                    ellipse(mouseX, mouseY, 60, 60);
+                  }
+              </code>
+            </pre>
+      </section>
+      <!-- Exemple mouse draw -->
+      <section>
+          <h4>Mouse draw</h4>
+            <p style="font-size: 28px;"><code>Exemple 1.3</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  // launch your canvas
+                  function setup() {
+                    // put setup code here
+                    createCanvas(640, 360);
+                    noSmooth();
+                  }
+
+                  // loop for your draw/animation
+                  function draw() {
+                    // put drawing code here
+                    background(255);
+                    fill(0,255,0);
+                    ellipse(mouseX, mouseY, 60, 60);
+                  }
+              </code>
+            </pre>
+      </section>
+       <!-- Que és una variable? -->
+       <section>
+          <h4>Que és una variable?</h4>
+          <ul>
+            <li>Una variable és una manera de guardar dades i de nomenar-les perquè és puguin fer servir més tard.</li>
+          </ul>
+          <h4 style="margin-top: 60px;">Per què fem servir les variables?</h4>
+          <ul>
+            <li>Per a evitar repetir el nostre codi.</li>
+            <li>Perquè podrem canviar valors fàcilment mentre que s'està executant el programa.</li>
+          </ul>
+        </section>
+      <!-- Com és crea una variable? -->
+      <section>
+        <h4>Com és crea una variable? <code> var</code></h4>
+        <p style="text-align: left;">En crear una variable, tu li poses un nom, el tipus de dades i un valor.
+            També declares o llistes les variables en la part superior del teu esbós.</p>
+            <ul>
+              <li><code>Tipus de dada:</code> paraules, imatges, tipografia.</li>
+              <li><code>Nom:</code> el que decideixes denominar a la variable (tria un nombre
+                que sigui informatiu i clar).</li>
+              <li><code>Valor:</code> un nombre, paraula, imatge, etc.</li>
+            </ul>
+      </section>
+      <!-- Exemple variables -->
+      <section>
+          <h4>Variables</h4>
+            <p style="font-size: 28px;"><code>Exemple 2.1</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  // variables declaration
+                  var a = 60
+                  var b = 80
+
+                  // launch your canvas
+                  function setup() {
+                    // put setup code here
+                    createCanvas(480,120);
+                    background(255,0,255);
+                  }
+
+                  // loop for your draw/animation
+                  function draw() {
+                    // put drawing code here
+                    strokeWeight(3);
+                    fill(7,185,255);
+                    ellipse(75,a,b,b);
+                    fill(255,0,40);
+                    ellipse(175,a,b,b);
+                    fill(140,255,0);
+                    ellipse(275,a,b,b);
+                  }
+
+              </code>
+            </pre>
+      </section>
+       <!-- Que és un operador? -->
+       <section>
+          <h4>Que és un operador?</h4>
+          <p style="text-align:left;">
+            <ul>
+              <li>Els símbols com +, -, i * <code>són operadors</code> .</li>
+              <li>Quan és col·loquen entre dos valors, poden crear <code>una expressió</code> .</p></li>
+            </ul>
+              <ul>
+                <li><code>+</code> suma.</li>
+                <li><code>-</code> resta.</li>
+                <li><code>*</code> multiplicació.</li>
+                <li><code>/</code> divisió.</li>
+                <li><code>=</code> assignació.</li>
+              </ul>
+       </section>
+       <!-- Operadors relacionals -->
+       <section>
+          <h4>Operadors relacionals </h4>
+          <ul>
+            <li><code>></code> major que.</li>
+            <li><code><</code> menor que.</li>
+            <li><code>>=</code> major que o igual.</li>
+            <li><code><=</code> menor que o igual.</li>
+            <li><code>==</code> igual a.</li>
+            <li><code>!=</code> no igual a.</li>
+            <li><code>||</code> o.</li>
+            <li><code>!</code> no.</li>
+          </ul>
+          <p style="text-align: left;"><small>Recorde l'ordre d'operacions per PRECEDENCIA D'
+              OPERADORS (PEMDAS): P aréntesis, E xponentes, M ultiplicació,
+              D ivisió, Suma/ A fegir, Resta/ S ustracció</small></p>
+       </section>
+       <!-- For loops -->
+       <section>
+          <h4>For loops</h4>
+          <p style="text-align: left;">Hi ha 4 parts en un for loop:</p>
+          <ul>
+            <li><code>La inicialització:</code> declara una nova variable (en general és fa servir
+              la lletra <code>i</code> ).</li>
+            <li><code>La prova:</code> avalua el valor d'aquesta variable.</li>
+            <li><code>Les declaracions:</code> el codi.</li>
+            <li><code>L'actualització:</code> canvis en el valor d'una variable.</li>
+          </ul>
+          <p style="text-align: left;"><small>Inicialització, prova i actualització treballen en conjunt per a controlar
+              quantes vegades s'executaran les declaracions o codi.</small></p>
+       </section>
+        <!-- Exemple loop -->
+      <section>
+          <h4>Loop</h4>
+            <p style="font-size: 28px;"><code>Exemple 2.3</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function setup() {
+                    createCanvas(480,120);
+                    background (180,255,255);
+                  }
+                  
+                  function draw() {
+                    strokeWeight (8)
+                    for( var i = 20; i<=260; i +=40 ){
+                    stroke (0,i,0);
+                    line (i,40,i,80); //aquesta línea és continuarà dibuixant
+                    //sempre i quan "i" sigui menor o igual a 260
+                    }
+                  }
+              </code>
+            </pre>
+      </section>
+      <!-- Explicació del codi loop-->
+      <section>
+        <h4>Repassem el codi anterior</h4>
+        <ul>
+          <li>La inicialització és <code>var i = 20</code>.</li>
+          <li>La prova és <code>i <= 260</code>.</li>
+          <li>I l'actualització és <code>i += 40</code>.</li>
+          <li>Llavors, per a <code>i = 20</code> , agregarà <code>40 a i</code>  , per a <code>i = 60</code> , agregarà <code>40 a i</code> , i
+              així successivament fins que i sigui major que <code>260</code>.</li>
+        </ul>
+      </section>
+      <!-- Nested for loop -->
+      <section>
+        <h4>Nested for loop</h4>
+        <p style="font-size: 28px;"><code>Exemple 2.5</code></p>
+        <p style="text-align: left;"><small>També podem tenir un o més for loop endins d'un for loop .
+            Això és denomina for loop anidat.</small></p>
+        <pre>
+            <code class="hljs" data-trim contenteditable>
+                // launch your canvas
+                function setup() {
+                  // put setup code here
+                  // init your variables
+                  createCanvas(displayWidth, displayHeight);
+                  // bg color
+                  background(0);
+                }
+                
+                // loop for your draw/animation
+                function draw() {
+                  // put drawing code here
+                  strokeWeight(8)
+                  for (var i = 20; i<=displayWidth; i +=40){
+                    for  (var j = 20; j<=displayHeight; j +=40) {
+                      stroke(j/2,i/2,0);
+                      line(i, j+20,i,j+40);
+                    }
+                  }
+                }
+                
+              </code>
+        </pre>
+
+      </section>
+      <!-- Repte -->
+      <section>
+        <h4>Repte</h4>
+        <p><small>Exercici a la següent slide</small></p>
+        <pre>
+            <code class="hljs" data-trim contenteditable>
+                function setup(){
+                  createCanvas(300,300);
+                  // background color goes here
+                }
+                 
+                function draw(){
+                // nacho color goes here
+                    for(var x = 20; x<=300; x +=45){ //creates triangles across the canvas
+                      // second loop to create triangles up and down canvas goes here
+                      triangle(x,0, x-15,0 +30,x +20,0 +45);
+                  }
+                 }
+            </code>
+      </section>
+      <!-- Repte passos-->
+      <section>
+        <h4>Exercici</h4>
+        <ul style="font-size: 28px;">
+          <li><code>1</code> Ajusta la grandària del canvas usant displayWidth i
+            displayHeight.</li>
+          <li><code>2</code> Actualitza el color del fons del teu paper tapís en <code>setup()</code>.</li>
+          <li><code>3</code> Actualitza el color dels teus naxos en <code>draw()</code>.</li>
+          <li><code>4</code> Estén el loop o cicle per tot l'ample del canvas usant
+            displayWidth.</li>
+          <li><code>5</code> Afegeix un altre loop per a mostrar naxos per tot el paper tapís
+            <ul>
+              <li><code>a</code> Usa inicialització: var j = 10;.</li>
+              <li><code>b</code> Usa prova: j <= displayHeight;.</li>
+              <li><code>c</code> Usa actualització: j += 45;.</li>
+              <li><code>d</code> Nota: la secció de “declaracions” no canviarà.</li>
+            </ul>
+          </li>
+          <li><code>6</code> Revisa que els loops s'obrin i tanquin amb claus <code>{ } !</code> .</li>
+          <li><code>7</code> Has acabat. Ara, activa el teu codi!.</li>
+        </ul>
+      </section>
+      <!-- Peer programming -->
+      <section>
+        <h4>Peer programming</h4>
+        <p style="font-size: 30px;">La programació en parella és quan dos developers fan servir un sol
+           ordinador. Una persona actua com el Pilot , i l'altra com el
+            Copilot.</p>
+        <ul>
+          <li><code>Pilot</code>
+            <ul>
+              <li>Controla el ratolí i el teclat.</li>
+              <li>S'encarrega dels detalls de codificació.</li>
+            </ul>
+          </li>
+          <li><code>Copilot</code>
+            <ul>
+              <li>Comparteix el ratolí.</li>
+              <li>Pensa en el que el codi ha de fer en major escala.</li>
+              <li>Revisa que no hi hagi errors o paraules/caràcters mal escrits.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+       <!-- Funcions -->
+       <section>
+          <h4>Funcions</h4>
+          <ul style="font-size: 32px;">
+            <li>Una <code>funció</code> li ensenya al programa una nova tasca. És una llista d'instruccions
+              que és guarden amb un nom per a usar-se després. (Com una recepta de cuina).</li>
+            <li>Nosaltres fem servir les funcions per a crear codi manipulable i <code> reutilitzable</code> .
+                  Ens estalvia temps!.</li>
+            <li> Per a declarar una funció, comences amb la paraula <code>function</code> . Li poses
+                un nom, igual que com ho faries amb una variable.</li>
+            <li>El nom sempre ha de començar amb <code>una lletra</code> . Les majúscules i minúscules importen! Aquest
+              és un exemple de com una funció de nom target és definida i dita diverses vegades.</li>
+          </ul>
+        </section>
+        <!-- Funcions Exemple -->
+      <section>
+          <h4>Funcions Exemple</h4>
+          <p style="font-size: 28px;"><code>Exemple 3.1</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function setup () {
+                    createCanvas(920,640)
+                    }
+                    function draw () {
+                    background(255);
+                    target(width/4,height/2); //crida
+                    target(width/2+200,height/2); //crida
+                    }
+                    function target(x,y) { //definició
+                    fill(255);
+                    ellipse(x,y,300,300);
+                    fill(0);
+                    ellipse(x,y,250,250);
+                    fill(72,196,253);
+                    ellipse(x,y,200,200);
+                    fill(255);
+                    ellipse(x,y,150,150);
+                    fill(255,255,0);
+                    ellipse(x,y,100,100);
+                }
+              </code>
+        </section>
+        <!-- Random -->
+      <section>
+          <h4>Funció Random</h4>
+          <ul>
+            <li>La funció <code>random()</code>o aleatori (a l'atzar) et dóna un nombre punt flotant
+              aleatori. (Recorda, un nombre punt flotant és sol un nombre decimal).</li>
+            <li>La funció <code>random()</code>pot tenir paràmetres. Els paràmetres són
+              trossos d'informació extra que ajuden a definir una funció.</li>
+            </ul>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  random( [min],[max] )
+                  rect( random([20],[400]), 20, 20, 20 )
+              </code>
+          </pre>
+          <p style="text-align: left;"><small>*min i max actuen com els límits inferiors i
+              superiors de la teva funció. Pots deixar els paràmetres buits per a qualsevol
+              nombre aleatori; o pots decidir escriure un valor min, max o tots dos.</small></p>
+        </section>
+        <!-- Condicionals -->
+        <section>
+            <h4>Condicional</h4>
+            <ul>
+              <li><code>if</code>.</li>
+              <li><code>then</code>.</li>
+              <li><code>else</code>.</li>
+              </ul>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    if ( weather == ‘nice’ ) {
+                        beachCode()
+                        } else if ( weather == ‘very nice’ ) {
+                        eatIceCream()
+                        } else {
+                        roomCode()
+                      }
+                </code>
+            </pre>
+            <p style="text-align: left;"><small>En pseucodi seria: 
+                En cas de (If)
+                que el clima (weather) sigui bó (nice), aniré a la platja a codificar
+                (beachCode) - si no (else), em quedaré a la meva habitació a codificar
+                (roomCode).</small></p>
+          </section>
+          <!-- Repte -->
+          <section>
+            <h4>Repte en parelles</h4>
+            <p style="font-size: 28px;"><code>Exemple 3.2 Repte</code></p>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    function setup() {
+                      createCanvas(windowWidth, windowHeight) // creates a canvas the size of window
+                      background(200,0,100) // sets background color to grey
+                    } 
+                    function draw() {
+                      var choice = parseInt(random(6))
+                      if (choice == 0){
+
+                      } else if (choice == 1){
+                      
+                      } else if (choice == 2){
+                        iceCream()
+                      } else if (choice == 3){
+
+                      } else if (choice == 4){
+
+                      } else if (choice == 5){
+
+                      } else {
+
+                      } 
+                    }
+                    
+                    // below are the functions called in draw()
+                    function goofyFace() {
+
+                      var x = random(width)    // creates a variable named x and store a random x-coordinate
+                      var y = random(height)   // creates a variable named y and store a random y-coordinate
+                        
+                      //goofy face shape
+                      fill(0,255,255);
+                      ellipse(x,y,100,100);
+
+                      // goofy face sclera
+                      strokeWeight(2); // step 5
+                      fill(0,255,0); // step 6
+                      ellipse(x,y,25,25);
+                      ellipse(x+33,y,25,25); 
+
+                      // goofy face pupils
+                      fill(0,0,0); // step 8
+                      rect(x-5,y-5,10,10)
+                      rect(x+30,y-5,10,10) 
+
+                      // goofy face mouth
+                      fill(255,0,0)
+                      rect(x-8,y+33,33,3)
+                      
+                    }
+
+                    function naxos() {
+                      var x = random(width)    // creates a variable named x and store a random x-coordinate
+                        var y = random(height)   // creates a variable named y and store a random y-coordinate
+                        
+                        fill(255,69,0)
+                      triangle(x,y, x-15,y +30,x +20,y +45)
+                    }
+
+                    function iceCream() {
+                      var x = random(width);    // creates a variable named x and store a random x-coordinate
+                        var y = random(height);   // creates a variable named y and store a random y-coordinate
+                      
+                        fill(255,195,77); // color of cone
+                        triangle(x,y, x-15,y -30,x +15,y -30); // cone
+                            
+                        fill(123,63,0); // color of chocolate ice cream
+                        arc(x,y-30, 25,25,PI,-PI); // ice cream
+                              
+                        fill(255,0,0); // color of cherry on top
+                        arc(x,y-43, 5,5,PI,-PI); // cherry on top
+
+                    }
+
+                    function lines() {
+                      var x = random(width);    // creates a variable named x and store a random x-coordinate
+                      var y = random(height);   // creates a variable named y and store a random y-coordinate
+                      
+                      strokeWeight(8);
+                      
+                      for(var i = 20; i<=260; i +=40){ 
+                        stroke(0,i,0);
+                        line(x+i,y+40,x+i,y+80);
+                      }
+                      
+                      strokeWeight(2); //reset back to defaults
+                      stroke(0); // reset back to defaults
+                    }
+
+                    function circles() {
+                      
+                      var x = random(width);    // creates a variable named x and store a random x-coordinate
+                      var y = random(height);   // creates a variable named y and store a random y-coordinate
+                      var b = 45;
+                      
+                      strokeWeight(3);
+                      fill(7,185,255);
+                      ellipse (x+75, y, b, b);
+                      fill(255,0,40);
+                      ellipse (x+175, y, b, b);
+                      fill(140,255,0);
+                      ellipse (x+275, y, b, b);
+                    }
+
+                    function circles2() {
+                      
+                      var x = random(width);    // creates a variable named x and store a random x-coordinate
+                      var y = random(height);   // creates a variable named y and store a random y-coordinate
+                      var b = 45;
+                      
+                      strokeWeight(3);
+                      fill(0,0,255);
+                      ellipse (x, y+75, b, b);
+                      fill(100,0,180);
+                      ellipse (x, y+175, b, b);
+                      fill(255,0,0);
+                      ellipse (x, y+275, b, b);
+                    }
+
+                    function walker () { // walker is a function we use to actually draw our walker on the screen
+                      
+                        var x = random(width);    // creates a variable named x and store a random x-coordinate
+                        var y = random(height);   // creates a variable named y and store a random y-coordinate
+                        
+                      ellipse(x,y,30,30); // head
+                      line(x,y+15,x,y+45); // body
+                      line(x,y+30,x-10,y+15); // left arm
+                      line(x,y+30,x+10,y+15); //right arm
+                      line(x,y+45,x-10,y+60); //left leg
+                      line(x,y+45,x+10,y+60); //right leg
+                    }
+
+                    // Below is the function template: use this template to create your own function:
+
+                    //function funcTemplate() {
+                    //          var x = random(width)// creates a variable named x and stores a random x-coordinate
+                    //          var y = random(height)// creates a variable named y and stores a random y-coordinate
+                    //         // put code for your object here
+                    //}
+                </code>
+          </section>
+          <!-- Repte Instruccions -->
+        <section>
+            <h4>Instruccions del repte</h4>
+            <ul style="font-size: 30px;">
+              <li><code>1</code> Què veus? On apareix el gelat (ice cream)?.</li>
+              <li><code>2</code> Examina <code>draw()</code> . On i com és diu al gelat
+                <code>iceCream()</code> ?.</li>
+              <li><code>3</code> Pots trobar on és defineix <code>iceCream()</code> ? Pista* Mira
+                sota <code> draw()</code> !.</li>
+              <li><code>4</code> Pensant en el #3, Com pots dir altres funcions ?.</li>
+              <li><code>5</code> En cada declaració condicional <code>if</code> flama una funció definida sota <code>draw()</code> per a crear formes. Ex.: <code>lines()</code> o <code>naxos()</code> .</li>
+              <li><code>6</code> Guarda i activa el teu codi.</li>
+              <li><code>7</code> Para el codi. Pots trobar totes les formes que vas anomenar en
+                <code>draw()</code> ? .</li>
+              <li><code>8</code> Si és que sí, felicitacions! Has creat art aleatori.</li>
+            </ul>
+        </section>
+        <!-- Exemple loop -->
+        <section>
+            <h4>Rotació</h4>
+              <p style="font-size: 28px;"><code>Exemple 4.1</code></p>
+              <p style="text-align: left; font-size: 30px;">
+                  La funció <code>rotate()</code> rota el sistema de coordenades per a què les formes
+                  és puguin dibuixar en angle. Té un paràmetre que fixa la quantitat de
+                  rotació. La quantitat és mesura en unitats de radians o radiants.</p>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    // rotate(PI/8) Usando radianes, el valor dels angles 
+                    // s'expressa en relació al valor matemátic de pi (𝜋).
+                    function setup() {
+                        createCanvas(500,500);
+                        stroke(255);
+                        background(0);
+                      }
+                    function draw() {
+                      var i = 250
+                      var j = 250
+                      fill(random(255),0,random(255));
+                      rotate (radians(random(360)));
+                      rect(0,0,20,20);
+                    }
+                </code>
+              </pre>
+        </section>
+        <!-- Exemple translate -->
+        <section>
+            <h4>Translate</h4>
+              <p style="font-size: 28px;"><code>Exemple 4.2</code></p>
+              <p style="text-align: left; font-size: 30px;">
+                  La funció <code>translate()</code> mou l'origen de la pantalla (0,0) a
+                  un altre lloc. Té dos paràmetres (la coordenada x, i la coordenada y).</p>
+              <pre>
+                <code class="hljs" data-trim contenteditable>
+                    //translate(x, y);
+                    function setup() {
+                      createCanvas(500,500);
+                      stroke(255);
+                      background(0);
+                    }
+
+                    function draw() {
+                      var i = 250
+                      var j = 250
+                      // translate();
+                      translate (i,j);
+                      fill(random(255),0,random(255));
+                      rotate(radians(random(360)));
+                      rect(0,0,20, 20);
+                    }
+                </code>
+              </pre>
+        </section>
+        <!-- Exemple escalar -->
+        <section>
+            <h4>Escalar</h4>
+              <p style="font-size: 28px;"><code>Exemple 4.3</code></p>
+              <p style="text-align: left; font-size: 30px;">
+                  La funció <code>scale()</code> 
+                  magnifica el sistema de coordenades
+                  perquè les formes és dibuixin més grans.</p>
+              <pre>
+                <code class="hljs" data-trim contenteditable>
+                    function setup() {
+                      createCanvas (500,500);
+                      stroke(255);
+                      background(0);
+                  }
+                  
+                  function draw() {
+                      var i = 250
+                      var j = 250
+                  
+                      translate(i,j);
+                      scale (500/60);
+                      fill(random(255),0,random(255));
+                      rotate(radians(random(360)));
+                      rect(0,0,20,20);
+                  }
+                </code>
+              </pre>
+        </section>
+         <!-- Exemple keyboard input -->
+         <section>
+            <h4>Keyboard input</h4>
+              <p style="font-size: 28px;"><code>Exemple 5.1</code></p>
+              <p style="text-align: left; font-size: 30px;">
+                  La funció de pressió de tecla <code>keyPressed()</code> és crida cada cop que pressionem una tecla.</p>
+              <pre>
+                <code class="hljs" data-trim contenteditable>
+                    function setup() {
+                      createCanvas (windowWidth, windowHeight);
+                      background (0);
+                  }
+                  
+                  function keyPressed (){
+                      if ( key == 'a' || key == 'A ') {
+                          strokeWeight( 0 )
+                          fill( random(150,255),0,random(150,255), random(255));
+                          ellipse( random(windowWidth),random(windowHeight),90,90);
+                      }
+                  
+                      if ( key == ' ') {
+                          clear();
+                      }
+                  }
+                </code>
+              </pre>
+        </section>
+         <!-- Repte de control -->
+         <section>
+            <h4>Repte de control</h4>
+            <p style="font-size: 28px;"><code>Exemple 5.2</code></p>
+            <ul style="font-size: 30px;">
+              <li><code>1</code> Pressiona la tecla “d”.</li>
+              <li><code>2</code> Què veus? On apareix el gelat?.</li>
+              <li><code>3</code> Examina <code>keyPressed()</code> On i com és anomenada
+                <code>iceCream()</code> ?.</li>
+              <li><code>4</code> Pots trobar on és defineix <code>iceCream()</code> ?.</li>
+              <li><code>5</code> Pensant en el #4, com pots dir altres funcions ?.</li>
+              <li><code>6</code> En cada declaració condicional “ if ”, flama una funció per a crear
+                formes. Veu les definicions de totes les funcions després
+                de <code>keyPressed()</code>. Ex.: <code>lines()</code> o <code>naxos()</code> .</li>
+              <li><code>7</code> Assigna diferents funcions a diferents lletres.</li>
+              <li><code>8</code> Guarda i activa el teu codi.</li>
+              <li><code>9</code> Per al codi. Pots trobar totes les formes que vas anomenar en
+                <code>draw()</code> ? Felicitacions! Has creat art que pots controlar.</li>
+            </ul>
+        </section>
+         <!-- So en p5.js -->
+         <section>
+            <h4>So en p5.js</h4>
+            <ul style="text-align: left; font-size: 30px;">
+              <li>Carregar música: Per a què puguis reproduir sons en p5.js, has de precargar un
+                arxiu de so en una funció <code>preload()</code>.</li>
+            </ul>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    function preload() {
+                      sound1 = loadSound(‘elteuarxiu.mp3');
+                    }
+                </code>
+            </pre>
+            <ul style="text-align: left; font-size: 30px;">
+                <li>Reproduir so: <code>sound1.play()</code> reproduirà el teu so. Aquesta funció és crida
+                    quan pressiones una tecla.</li>
+              </ul>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    if ( key == 'S' || key == 's ') {
+                      sound1.play() //activa so1
+                </code>
+            </pre>
+        </section>
+        <!-- So en p5.js Exemple 6.1 -->
+        <section>
+            <p style="font-size: 28px;"><code>Exemple 6.1</code></p>
+                  <ul style="font-size: 30px;">
+                    <li><code>1</code> Utilitza el codi següent per a practicar sons i keyPressed.</li>
+                    <li><code>2</code> Tria i carrega arxius de so (.mp3 o .wav) per a usar en el teu sketch.</li>
+                    <li><code>3</code> Examina <code>keyPressed()</code> On i com és anomenada
+                      <code>iceCream()</code> ?.</li>
+                    <li><code>4</code> Fes que és reprodueixi un so diferent quan és dibuixa cada
+                      forma.</li>
+                  </ul>
+            <pre>
+                <code class="hljs" data-trim contenteditable>
+                    function preload() {
+                      sound1 = loadSound('assets/coin-sound.mp3'); //nom del arxiu de so
+                      //inicialitzar so1
+                      sound2 = loadSound('assets/jump-sound.mp3'); //nom del arxiu de so
+                      //inicialitzar so2
+                      }
+                      
+                      function setup() {
+                      //el Mida del teu canvas aquí
+                        createCanvas(500,500);
+                        background(0,0,255);
+                      }
+                      
+                      function keyPressed() {
+                        if ( key == 'k' || key == 'r') {
+                        sound1.play(); //activar el so
+                        fill(255); //emplenar les formes amb color
+                        strokeWeight(); //tria el gruix de la línia
+                        //del perímetre
+                        //dibuixa les formes aquí
+                        }
+                        //reprodueix el so2 i dibuixa un altre forma aquí
+                      }
+                      
+                      // loop for your draw/animation
+                      function draw() {
+                        // put drawing code here
+                        noStroke();
+                        fill(255,255,0);
+                        ellipse(250,250,250,250);
+                      }
+                </code>
+            </pre>
+        </section>
+         <!-- Imatges amb P5.js -->
+      <section>
+          <h4>Imatges amb P5.js</h4>
+          <p style="font-size: 28px;"><code>Exemple 3.1</code></p>
+          <pre>
+              <code class="hljs" data-trim contenteditable>
+                  function setup () {
+                    createCanvas(920,640)
+                    }
+                    function draw () {
+                    background(255);
+                    target(width/4,height/2); //crida
+                    target(width/2+200,height/2); //crida
+                    }
+                    function target(x,y) { //definició
+                    fill(255);
+                    ellipse(x,y,300,300);
+                    fill(0);
+                    ellipse(x,y,250,250);
+                    fill(72,196,253);
+                    ellipse(x,y,200,200);
+                    fill(255);
+                    ellipse(x,y,150,150);
+                    fill(255,255,0);
+                    ellipse(x,y,100,100);
+                }
+              </code>
+        </section>
+  <!-- Text amb P5.js -->
+  <section>
+      <h4>Text amb P5.js</h4>
+      <p style="font-size: 28px;"><code>Exemple 6.3</code></p>
+      <pre>
+          <code class="hljs" data-trim contenteditable>
+              function setup () {
+                createCanvas(920,640)
+                }
+                function draw () {
+                background(255);
+                target(width/4,height/2); //crida
+                target(width/2+200,height/2); //crida
+                }
+                function target(x,y) { //definició
+                fill(255);
+                ellipse(x,y,300,300);
+                fill(0);
+                ellipse(x,y,250,250);
+                fill(72,196,253);
+                ellipse(x,y,200,200);
+                fill(255);
+                ellipse(x,y,150,150);
+                fill(255,255,0);
+                ellipse(x,y,100,100);
+            }
+          </code>
+    </section>
+    <!-- Recursos -->
+    <section>
+      <h4>Continua experimentant</h4>
+      <ul style="font-size: 30px;">
+        <li>
+          <a target="_blank" href="http://codingrainbow.com">Coding Rainbow </a> és la sèrie divertida de Donen Shiffman que t'ensenya com
+          codificar. Veu el seu playlist de vídeos sobre p5.js en YouTube!.
+        </li>
+        <li>
+          <a target="_blank" href="http://www.upperlinecode.com/p5js/">Upperline Reference </a> 
+            és una guia de referència de p5.js que t'ajuda a començar el teu camí pel món de Javascript fent servir la llibreria p5.js. En
+            el següent enllaç trobaràs consells, trucs i recursos molt útils!.
+        </li>
+        <li>
+            <a target="_blank" href="http://tinyurl.com/careerswithcode">Careers with Code </a> 
+            és una revista per a tota persona interessada en carreres i professions futures que barregen la informàtica amb les teves habilitats, interessos
+            i passions, que et dóna les destreses per a canviar el món.
+        </li>
+        <li>
+            <a target="_blank" href="https://devart.withgoogle.com">DevArt </a> és una celebració d'art creada amb codi per enginyosos artistes
+            innovadors, on la tecnologia és el seu canvas i el codi la matèria primera.
+        </li>
+      </ul>
+    </section>
+
+    <script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
